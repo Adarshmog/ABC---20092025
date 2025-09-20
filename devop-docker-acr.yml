@@ -19,7 +19,7 @@ stages:
       inputs:
         command: buildAndPush
         containerRegistry: 'docker-acr-shark'
-        repository: 'ubuntu-latest-script'
+        repository: 'ubuntu-cron'
         dockerfile: 'Dockerfile'
         tags: |
           $(Build.BuildId)
