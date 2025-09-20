@@ -13,12 +13,12 @@ stages:
     - task: Docker@2
       inputs:
         command: login
-        containerRegistry: 'docker-acr-adarsh'
+        containerRegistry: 'docker-acr-shark'
 
     - task: Docker@2
       inputs:
         command: buildAndPush
-        containerRegistry: 'docker-acr-adarsh'
+        containerRegistry: 'docker-acr-shark'
         repository: 'ubuntu-latest-script'
         dockerfile: 'Dockerfile'
         tags: |
