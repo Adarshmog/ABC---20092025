@@ -1,0 +1,28 @@
+trigger: none
+
+pool:
+  name: 'Adarsh-linux'
+
+stages:
+- stage: DockerBuild
+  displayName: "build and push docker image"
+  jobs:
+  - job: BuildAndPush
+    displayName: "build and push to ACR"
+    steps:
+    - task: Docker@2
+      inputs:
+        command: login
+        containerRegistry: 'docker-acr-adarsh'
+
+    - task: Docker@2
+      inputs:
+        command: buildAndPush
+        containerRegistry: 'docker-acr-adarsh'
+        repository: 'ubuntu-latest-script'
+        dockerfile: 'Dockerfile'
+        tags: |
+          $(Build.BuildId)
+          latest
+        arguments: '--target create1'
+
